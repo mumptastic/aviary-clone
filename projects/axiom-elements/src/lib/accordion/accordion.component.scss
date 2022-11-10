@@ -1,0 +1,67 @@
+:host {
+
+        .accordian-tabs { 
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordian-tab {
+            --white: #fff;
+
+            width: 100%;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .accordian-label {
+            --padding: 1em;
+            --background: #500000;
+
+            display: flex;
+            justify-content: space-between;
+            padding: var(--padding);
+            background: var(--background);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .accordian-label:hover {
+            --background: #490000;
+            background: var(--background);
+        }
+
+        .accordian-label::after {
+            content:'❯';
+            width: var(--padding);
+            height: var(--padding);
+            text-align: center;
+            transition: all;
+        }
+
+        .accordian-content {
+            max-height: 0;
+            padding: 0 var(--padding);
+            color: #000;
+            background: var(--white);
+            transition: all 0.25s;
+        }
+
+        input:checked + .accordian-label {
+            background: var(--background);
+        }
+
+        input:checked + .accordian-label::after {
+            transform: rotate(90deg);
+        }
+
+        input:checked ~ .accordian-content {
+            max-height:100vh;
+            padding: var(--padding);
+        }
+
+        input {
+           position: absolute;
+           opacity: 0;
+           z-index: -1;
+        }
+}
